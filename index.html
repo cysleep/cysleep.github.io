@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>华为手机 - 华为官网</title>
+    <style>
+        /* 全局重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "HarmonyOS Sans", "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* 顶部导航栏 */
+        .navbar {
+            background-color: #1a1a1a;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+            height: 64px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .navbar .logo {
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            font-size: 14px;
+        }
+        .navbar ul li {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .navbar ul li:hover {
+            color: #cf0a2c;
+        }
+        .navbar .search-icon {
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        /* 首屏大图区域 */
+        .hero {
+            position: relative;
+            height: 520px;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: rotate 20s linear infinite;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            letter-spacing: 4px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero p {
+            font-size: 18px;
+            opacity: 0.8;
+            margin-bottom: 32px;
+            position: relative;
+            z-index: 1;
+        }
+        .hero .btn {
+            background-color: #cf0a2c;
+            color: #fff;
+            padding: 12px 40px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+            position: relative;
+            z-index: 1;
+            border: none;
+        }
+        .hero .btn:hover {
+            background-color: #a00822;
+        }
+
+        /* 产品展示区 */
+        .products {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: #1a1a1a;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+        .product-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+        }
+        .product-card .phone-icon {
+            font-size: 60px;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .product-card h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+        }
+        .product-card .desc {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+        .product-card .price {
+            font-size: 18px;
+            color: #cf0a2c;
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+        .product-card .btn-sm {
+            background-color: transparent;
+            border: 1px solid #cf0a2c;
+            color: #cf0a2c;
+            padding: 8px 24px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .product-card .btn-sm:hover {
+            background-color: #cf0a2c;
+            color: #fff;
+        }
+
+        /* 底部 */
+        footer {
+            background-color: #1a1a1a;
+            color: #999;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+        footer .links {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        footer .links a:hover {
+            color: #fff;
+        }
+        footer .copyright {
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部导航 -->
+    <nav class="navbar">
+        <div class="logo">HUAWEI</div>
+        <ul>
+            <li>手机</li>
+            <li>笔记本</li>
+            <li>平板</li>
+            <li>穿戴</li>
+            <li>智慧屏</li>
+            <li>服务</li>
+        </ul>
+        <div class="search-icon">🔍</div>
+    </nav>
+
+    <!-- 首屏大图 -->
+    <section class="hero">
+        <h1>HUAWEI Mate 60 Pro</h1>
+        <p>同心聚力，共创新境</p>
+        <button class="btn">了解更多</button>
+    </section>
+
+    <!-- 产品列表 -->
+    <section class="products">
+        <h2 class="section-title">探索华为手机</h2>
+        <div class="product-grid">
+            <!-- 卡片 1 -->
+            <div class="product-card">
+                <span class="phone-icon">📱</span>
+                <h3>HUAWEI Mate 60 Pro</h3>
+                <p class="desc">超可靠玄武架构，卫星通话，全焦段超清影像</p>
+                <div class="price">¥6999 起</div>
+                <button class="btn-sm">了解更多</button>
+            </div>
+            <!-- 卡片 2 -->
+            <div class="product-card">
+                <span class="phone-icon">📱</span>
+                <h3>HUAWEI Pura 70 Ultra</h3>
+                <p class="desc">超高速风驰闪拍，伸缩镜头，新一代超聚光主摄</p>
+                <div class="price">¥9999 起</div>
+                <button class="btn-sm">了解更多</button>
+            </div>
+            <!-- 卡片 3 -->
+            <div class="product-card">
+                <span class="phone-icon">📱</span>
+                <h3>HUAWEI nova 12</h3>
+                <p class="desc">前置 6000 万超广角，轻薄时尚，鸿蒙智慧通信</p>
+                <div class="price">¥2999 起</div>
+                <button class="btn-sm">了解更多</button>
+            </div>
+            <!-- 卡片 4 -->
+            <div class="product-card">
+                <span class="phone-icon">📱</span>
+                <h3>HUAWEI Mate X5</h3>
+                <p class="desc">超轻薄折叠，玄武钢化昆仑玻璃，灵犀通信</p>
+                <div class="price">¥12999 起</div>
+                <button class="btn-sm">了解更多</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部 -->
+    <footer>
+        <div class="links">
+            <a href="#">隐私声明</a>
+            <a href="#">用户协议</a>
+            <a href="#">联系我们</a>
+            <a href="#">加入我们</a>
+        </div>
+        <div class="copyright">
+            © 2026 华为技术有限公司 版权所有 | 本页面为实验演示页面
+        </div>
+    </footer>
+
+</body>
+</html>
